@@ -20,7 +20,7 @@ class Kosmos2(DetectionBaseModel):
         self.ontology = ontology
         self.model = AutoModelForVision2Seq.from_pretrained(
             "microsoft/kosmos-2-patch14-224", trust_remote_code=True
-        )
+        ).to(DEVICE)
         self.processor = AutoProcessor.from_pretrained(
             "microsoft/kosmos-2-patch14-224", trust_remote_code=True
         )
@@ -32,7 +32,9 @@ class Kosmos2(DetectionBaseModel):
 
         image = Image.open(input)
 
-        inputs = self.processor(text=prompt, images=image, return_tensors="pt")
+        inputs = self.processor(text=prompt, images=image, return_tensors="pt").to(
+            DEVICE
+        )
 
         generated_ids = self.model.generate(
             pixel_values=inputs["pixel_values"],
