@@ -19,10 +19,10 @@ class Kosmos2(DetectionBaseModel):
     def __init__(self, ontology: CaptionOntology):
         self.ontology = ontology
         self.model = AutoModelForVision2Seq.from_pretrained(
-            "ydshieh/kosmos-2-patch14-224", trust_remote_code=True
+            "microsoft/kosmos-2-patch14-224", trust_remote_code=True
         )
         self.processor = AutoProcessor.from_pretrained(
-            "ydshieh/kosmos-2-patch14-224", trust_remote_code=True
+            "microsoft/kosmos-2-patch14-224", trust_remote_code=True
         )
 
     def predict(self, input: str) -> sv.Detections:
@@ -38,8 +38,8 @@ class Kosmos2(DetectionBaseModel):
             pixel_values=inputs["pixel_values"],
             input_ids=inputs["input_ids"][:, :-1],
             attention_mask=inputs["attention_mask"][:, :-1],
-            img_features=None,
-            img_attn_mask=inputs["img_attn_mask"][:, :-1],
+            image_embeds=None,
+            image_embeds_position_mask=inputs["image_embeds_position_mask"][:, :-1],
             use_cache=True,
             max_new_tokens=64,
         )
