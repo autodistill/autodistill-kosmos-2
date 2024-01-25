@@ -55,7 +55,7 @@ base_model.label("./context_images", extension=".jpeg")
 
 ## License
 
-This package is implemented using the [Transformers Kosmos-2 work in progress implementation](https://huggingface.co/ydshieh/kosmos-2-patch14-224). The underlying Kosmos-2 model, developed by Microsoft, is licensed under an [MIT license](https://github.com/microsoft/unilm/blob/master/LICENSE).
+This package is implemented using the [Transformers Kosmos-2 implementation](https://huggingface.co/microsoft/kosmos-2-patch14-224). The underlying Kosmos-2 model, developed by Microsoft, is licensed under an [MIT license](https://github.com/microsoft/unilm/blob/master/LICENSE).
 
 ## 🏆 Contributing
 
